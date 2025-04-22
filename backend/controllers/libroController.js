@@ -14,17 +14,16 @@ class LibroController {
   }
 
   async createLibro(req, res) {
-    console.log("📦 Body recibido:", req.body); // 👈 Verifica el contenido
+    console.log(" Body recibido:", req.body);
     try {
       const nuevoLibro = await libroService.createLibro(req.body);
       res.status(201).json(nuevoLibro);
     } catch (error) {
-      console.error("❌ Error al crear libro:", error.message);
+      console.error(" Error al crear libro:", error.message);
       res.status(500).json({ error: "Error al crear libro" });
     }
   }
   
-
   async deleteLibro(req, res) {
     await libroService.deleteLibro(req.params.id);
     res.json({ message: "Libro eliminado" });
